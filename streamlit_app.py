@@ -16,6 +16,9 @@ session = cnx.session()
 my_dataframe = session.table("smoothies.public.fruit_options").select(col('fruit_name'))
 ingredients_list = st.multiselect('Choose upto 5 ingredients',my_dataframe,max_selections =5)
 # st.dataframe(data=my_dataframe, use_container_width=True)
+import requests
+fruityvice_response = requests.get("https://fruityvice.com/api/fruit/watermelon")
+st.text(fruityvice_response.json())
 if ingredients_list:
 
     ingredients_string = ''
